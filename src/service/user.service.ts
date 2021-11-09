@@ -36,3 +36,8 @@ export const validatePassword = async ({
 
     return omit(user.toJSON(), "password") as IUser
 }
+
+export const findUserById = async (id : string) => {
+    return UserModel.findById(id).lean();
+}
+
