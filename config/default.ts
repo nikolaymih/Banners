@@ -1,5 +1,29 @@
 export default {
     port: 5000,
     dbUri: '"mongodb://localhost:27017/BannerCreator',
-    saltRounds: 12
-}
+    saltRounds: 12,
+    accessTokenExpiration: '15m',
+    refreshTokenExpiration: '1y',
+    publicKey: `-----BEGIN PUBLIC KEY-----
+    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDwyJTWwDcA6RSkl9bI94M91Kq6
+bHJ/u3El909We0nmVj6oAPsrAIh7WFzTL2BG/d+sseWAt6TSwUU6TuJgnAG2Ea0K
+nxsr55rS7p7MHtq5hi5v5ZLI6bfZpyGy6QHNwR2hQ87ms5PnlqPk1eZ7X8Tvdseo
+LNyQUWhlS+Ksb8Pp0QIDAQAB
+    -----END PUBLIC KEY-----`,
+    privateKey: `-----BEGIN RSA PRIVATE KEY-----
+    MIICXAIBAAKBgQDwyJTWwDcA6RSkl9bI94M91Kq6bHJ/u3El909We0nmVj6oAPsr
+    AIh7WFzTL2BG/d+sseWAt6TSwUU6TuJgnAG2Ea0Knxsr55rS7p7MHtq5hi5v5ZLI
+    6bfZpyGy6QHNwR2hQ87ms5PnlqPk1eZ7X8TvdseoLNyQUWhlS+Ksb8Pp0QIDAQAB
+    AoGAWGhddehHidcK1FBH9awjjQ1Lzn1JISsypU0D3W4ROTiLcuZBUo20jw1nr8bi
+    Y86NVPxQlw1WwGdkQr96ERzW50uOQpWEDFtLhMdmEI6WNZPKLz6uvQ7qNz+P+NqQ
+    h3m3ccTIXEkteUeurZeJMBLIAclPYes9HOlNo4BZt3ILJ8ECQQD40xUtRUcjGGu+
+    btqQRpj3RWg7VqxP3TbRYDXHuNrn+1zMTll+fE29IECXGi+0VLnJUC1599H3OmGw
+    h/9t25WpAkEA97ojBf6ZSvEb6M2RT92g5LQfhLkI2TniCsbmRFieeviiBX78qesz
+    XXIYawaOtyEi8zZmUapuWDHxHekWkUz76QJBAIs0xJ88J+1Jh1XV/O9En+WO7h5s
+    giB4OWfv9IaVM9sfNK6UktsBvhg2CAzBOLkhwYMQGTEoZU50Wh0CKPQUKmkCQD9M
+    lqpvdegKV+FStbC8puIJjIwzY6lt+u5aCHiqVESDx5Kz8gfRC5zzDH48fLcahn2z
+    Bs4TSILMsBm+d3/FNhECQCee520YdLpbVqqxHSgiVUT2wHbjCtGKVKFxK4OXLFUj
+    epLYuA24bUwwyCDw/pLtC3mHMDFF19Ow8aw8JUB9Sc4=
+-----END RSA PRIVATE KEY-----`,
+};
+
