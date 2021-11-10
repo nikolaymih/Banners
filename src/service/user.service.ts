@@ -1,16 +1,16 @@
 import UserModel from '../models/user.model';
 import { DocumentDefinition } from "mongoose";
-import { IUser } from '../models/interfaces';
+import { IUserDocument } from '../models/interfaces';
 import { omit } from 'lodash';
 
 export const createUser = async (
     payload: DocumentDefinition<
-        Omit<IUser, 'createdAt' | 'updatedAt' | 'comparePassword'>
+        Omit<IUserDocument, 'createdAt' | 'updatedAt' | 'comparePassword'>
     >
-): Promise<IUser> => {
-    const createdUser: IUser = await UserModel.create(payload);
+): Promise<IUserDocument> => {
+    const createdUser: IUserDocument = await UserModel.create(payload);
 
-    const user: IUser = await createdUser.save();
+    const user: IUserDocument = await createdUser.save();
 
     return user;
 }
@@ -34,7 +34,7 @@ export const validatePassword = async ({
         return false;
     }
 
-    return omit(user.toJSON(), "password") as IUser
+    return omit(user.toJSON(), "password") as IUserDocument
 }
 
 export const findUserById = async (id : string) => {
