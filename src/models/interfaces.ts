@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-export interface IUser extends mongoose.Document {
+export interface IUserDocument extends mongoose.Document {
     name: string,
     email: string,
     password: string,
@@ -10,9 +10,17 @@ export interface IUser extends mongoose.Document {
 }
 
 export interface ISessionDocument extends mongoose.Document {
-    user: IUser["_id"];
+    user: IUserDocument["_id"];
     valid: boolean;
     userAgent: string;
     createdAt: Date;
     updatedAt: Date;
   }
+
+export interface IBannerDocument extends mongoose.Document {
+    user: IUserDocument['_id'],
+    text: string,
+    image: string,
+    createdAt: Date;
+    updatedAt: Date;
+}

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IUser } from '../models/interfaces';
+import { IUserDocument } from '../models/interfaces';
 import { CreateUserInput } from '../schema/user.schema';
 import { createUser } from '../service/user.service';
 import { omit } from 'lodash';
@@ -10,7 +10,7 @@ export const createUserHandler = async (
     res: Response
 ): Promise<void> => {
     try {
-        const user: IUser = await createUser(req.body);
+        const user: IUserDocument = await createUser(req.body);
         res.status(201).send(omit(user.toJSON(), 'password'));
     } catch (e: any) {
         logger.error(e);
