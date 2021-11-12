@@ -1,5 +1,6 @@
 export default {
     port: 5000,
+    origin: 'http://localhost:3000',
     dbUri: '"mongodb://localhost:27017/BannerCreator',
     saltRounds: 12,
     accessTokenExpiration: '15m',

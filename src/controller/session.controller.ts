@@ -28,7 +28,25 @@ export const createUserSessionHandler = async (req: Request, res: Response) => {
         { expiresIn: config.get<string>('refreshTokenExpiration') }
     )
 
-    // return access and refresh token
+    // return access and refresh token to client either for localstorage or cookies
+    res.cookie('accessToken', accessToken, {
+        maxAge: 90000, // 15mins
+        httpOnly: true,
+        domain: 'localhost', //change domain on production
+        path: '/',
+        sameSite: 'strict',
+        secure: false // set to true in production because in prod u need https
+    })
+
+    res.cookie('refreshToken', refreshToken, {
+        maxAge: 3.154e10, // 1 year
+        httpOnly: true,
+        domain: 'localhost', //change domain on production
+        path: '/',
+        sameSite: 'strict',
+        secure: false // set to true in production because in prod u need https
+    })
+
     return res.send({ accessToken, refreshToken });
 }
 
@@ -43,7 +61,7 @@ export const getUserSessionsHandler = async (req: Request, res: Response) => {
 export const deleteSessionHandler = async (req: Request, res: Response) => {
     const session = res.locals.user.session;
 
-    await updateSession({_id: session}, {valid: false});
+    await updateSession({ _id: session }, { valid: false });
 
     return res.send({
         accessToken: null,

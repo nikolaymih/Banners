@@ -17,3 +17,10 @@ export const createUserHandler = async (
         res.status(404).send(e.message);
     }
 }
+
+export const getCurrentUser = async(
+    req: Request,
+    res: Response
+) => {
+    return res.send(res.locals.user);
+}

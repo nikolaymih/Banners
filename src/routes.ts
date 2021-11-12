@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import { createUserHandler } from './controller/user.controller';
+import { createUserHandler, getCurrentUser } from './controller/user.controller';
 import { createUserSchema } from './schema/user.schema';
 import validateResources from './middleware/validateResources';
 import { createUserSessionHandler, deleteSessionHandler, getUserSessionsHandler } from './controller/session.controller';
@@ -10,6 +10,8 @@ import { createBannerHandler, deleteBannerHandler, findAllUserBannersHandler, fi
 
 export default (app: Express) => {
     app.post('/api/users', validateResources(createUserSchema), createUserHandler);
+
+    app.get('/api/user', requireUser, getCurrentUser);
 
     app.post('/api/sessions', validateResources(sessionSchema), createUserSessionHandler);
 

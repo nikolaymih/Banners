@@ -14,7 +14,7 @@ export const findBanner = async (
     query: FilterQuery<IBannerDocument>,
     options: QueryOptions = { lean: true }
 ) => {
-    return BannerModel.findOne(query, {}, options);
+    return BannerModel.findOne({ _id: query.bannerId }, {}, options);
 }
 
 export const findAndUpdateBanner = async (
@@ -22,9 +22,9 @@ export const findAndUpdateBanner = async (
     update: UpdateQuery<IBannerDocument>,
     options: QueryOptions
 ) => {
-    return BannerModel.findByIdAndUpdate(query, update, options);
+    return BannerModel.findByIdAndUpdate({ _id: query.bannerId }, update, options);
 }
 
 export const deleteBanner = async (query: FilterQuery<IBannerDocument>) => {
-    return BannerModel.deleteOne(query);
+    return BannerModel.deleteOne({ _id: query.banner._id });
 }

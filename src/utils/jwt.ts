@@ -17,17 +17,17 @@ export const jwtSign = (
 export const jwtVerify = (token: string,) => {
     try {
         const decoded = jwt.verify(token, publicKey);
-
         return {
             valid: true,
             expired: false,
-            decoded
-        }
+            decoded,
+        };
     } catch (e: any) {
+        console.error(e);
         return {
             valid: false,
-            expired: e.message === 'jwt expired',
-            decoded: null
-        }
+            expired: e.message === "jwt expired",
+            decoded: null,
+        };
     }
 }
