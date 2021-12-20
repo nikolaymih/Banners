@@ -30,7 +30,7 @@ export const createUserSessionHandler = async (req: Request, res: Response) => {
 
     // return access and refresh token to client either for localstorage or cookies
     res.cookie('accessToken', accessToken, {
-        maxAge: 90000, // 15mins
+        maxAge: 900000, // 15mins
         httpOnly: true,
         domain: 'localhost', //change domain on production
         path: '/',

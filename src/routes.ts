@@ -9,7 +9,7 @@ import { createBannerSchema, deleteBannerSchema, findAndUpdateBannerSchema, find
 import { createBannerHandler, deleteBannerHandler, findAllUserBannersHandler, findBannerAndUpdateHandler, findSingleBannerHandler } from './controller/banner.controller';
 
 export default (app: Express) => {
-    app.post('/api/users', validateResources(createUserSchema), createUserHandler);
+    app.post('/api/user', validateResources(createUserSchema), createUserHandler);
 
     app.get('/api/user', requireUser, getCurrentUser);
 
